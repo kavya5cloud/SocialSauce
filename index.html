@@ -2,13 +2,528 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=/index-5.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SocialSauce</title>
+    <title>SocialSauce | AI-Powered Social Media Management Platform</title>
+    <meta name="description" content="SocialSauce is an AI-powered social media management and content intelligence platform designed to help creators, startups, and businesses grow their online presence effortlessly.">
+    <meta property="og:title" content="SocialSauce | AI-Powered Social Media Management Platform">
+    <meta property="og:description" content="SocialSauce helps teams plan, create, schedule, and publish strategic content with AI-powered insights, SEO signals, and performance analytics.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SocialSauce | AI-Powered Social Media Management Platform">
+    <meta name="twitter:description" content="AI-powered social media management and content intelligence for creators, startups, and businesses.">
+    <style>
+        :root {
+            --bg: #fffaf8;
+            --surface: #fff;
+            --surface-soft: #f8ebe9;
+            --text: #201616;
+            --muted: #6d5a5a;
+            --accent: #dc143c;
+            --accent-dark: #b10f30;
+            --line: rgba(32, 22, 22, 0.08);
+            --shadow: 0 24px 60px rgba(124, 20, 46, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(220, 20, 60, 0.12), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(220, 20, 60, 0.16), transparent 35%),
+                var(--bg);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 22px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--line);
+            box-shadow: none;
+        }
+
+        .hero {
+            padding: 48px 0 72px;
+            display: grid;
+            gap: 28px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(220, 20, 60, 0.08);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 900px;
+            font-size: clamp(3rem, 8vw, 6.2rem);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+        }
+
+        h1 .accent {
+            color: var(--accent);
+        }
+
+        .lead {
+            max-width: 760px;
+            margin: 0;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat,
+        .card,
+        .feature,
+        .footer-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat {
+            padding: 22px;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.9rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+
+        .section {
+            padding: 28px 0 48px;
+        }
+
+        .section-head {
+            max-width: 760px;
+            margin-bottom: 24px;
+        }
+
+        .section-head h2 {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.04em;
+        }
+
+        .section-head p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .feature {
+            padding: 26px;
+        }
+
+        .feature .num {
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .feature h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .workflow {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+        }
+
+        .card {
+            padding: 28px;
+        }
+
+        .steps {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 14px;
+            align-items: start;
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--surface-soft);
+        }
+
+        .step strong {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .step h4 {
+            margin: 0 0 6px;
+        }
+
+        .step p,
+        .list p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .list-item {
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .list-item:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .footer {
+            padding: 18px 0 48px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 18px;
+        }
+
+        .footer-card {
+            padding: 24px;
+        }
+
+        .footer-card h3 {
+            margin: 0 0 14px;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-card p,
+        .footer-card li {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .footer-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 980px) {
+            .stats,
+            .features,
+            .workflow,
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links,
+            .stats,
+            .features,
+            .workflow,
+            .footer-grid,
+            .footer-bottom {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <script>
-        window.location.replace("/index-5.html");
-    </script>
+    <div class="shell">
+        <header class="nav">
+            <div class="brand">Social<span>Sauce</span></div>
+            <nav class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#features">Features</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#footer">Contact</a>
+            </nav>
+            <a class="button" href="mailto:hello@socialsauce.com">Contact Us</a>
+        </header>
+
+        <section class="hero" id="overview">
+            <div class="eyebrow">AI-Powered Social Media Management</div>
+            <h1>Social media <span class="accent">strategy, content, scheduling, and publishing</span> in one intelligent platform.</h1>
+            <p class="lead">SocialSauce is an AI-powered social media management and content intelligence platform designed to help creators, startups, and businesses grow their online presence effortlessly.</p>
+            <div class="hero-actions">
+                <a class="button" href="mailto:hello@socialsauce.com">Start with SocialSauce</a>
+                <a class="button secondary" href="#features">Explore Features</a>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <strong>AI</strong>
+                    Generates content ideas, captions, and post directions faster.
+                </div>
+                <div class="stat">
+                    <strong>SEO</strong>
+                    Uses search and discoverability signals to improve visibility.
+                </div>
+                <div class="stat">
+                    <strong>Smart</strong>
+                    Schedules content when audiences are most active.
+                </div>
+                <div class="stat">
+                    <strong>Analytics</strong>
+                    Tracks performance so strategy improves over time.
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="section-head">
+                <h2>What SocialSauce does</h2>
+                <p>The platform analyzes trends, audience behavior, SEO signals, and platform algorithms to generate high-performing content ideas, captions, and hashtags. It helps users create optimized posts tailored for LinkedIn, Instagram, X (Twitter), and other platforms.</p>
+            </div>
+            <div class="features">
+                <article class="feature">
+                    <div class="num">01</div>
+                    <h3>AI Content Generation</h3>
+                    <p>Create platform-ready content ideas, captions, and post concepts aligned with your brand voice and goals.</p>
+                </article>
+                <article class="feature">
+                    <div class="num">02</div>
+                    <h3>Trend Discovery</h3>
+                    <p>Spot emerging opportunities by reading trends, audience behavior, and platform momentum early.</p>
+                </article>
+                <article class="feature">
+                    <div class="num">03</div>
+                    <h3>SEO-Optimized Captions</h3>
+                    <p>Write captions designed for stronger discoverability, visibility, and reach across social platforms.</p>
+                </article>
+                <article class="feature">
+                    <div class="num">04</div>
+                    <h3>Hashtag Suggestions</h3>
+                    <p>Generate relevant hashtag sets that improve categorization, discoverability, and audience targeting.</p>
+                </article>
+                <article class="feature">
+                    <div class="num">05</div>
+                    <h3>Content Calendars and Scheduling</h3>
+                    <p>Plan content in advance and automatically publish at the best time based on engagement patterns and audience activity.</p>
+                </article>
+                <article class="feature">
+                    <div class="num">06</div>
+                    <h3>Cross-Platform Publishing and Analytics</h3>
+                    <p>Publish strategically across channels while measuring performance to continuously improve results.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <div class="section-head">
+                <h2>How SocialSauce works</h2>
+                <p>Beyond content creation, SocialSauce provides smart scheduling and automated publishing. The system determines the best time to post based on audience activity, engagement patterns, and SEO-related factors to maximize reach and visibility.</p>
+            </div>
+            <div class="workflow">
+                <div class="card">
+                    <h3>Strategic publishing workflow</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <strong>01</strong>
+                            <div>
+                                <h4>Plan</h4>
+                                <p>Build a content calendar around trends, audience intent, and platform opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <strong>02</strong>
+                            <div>
+                                <h4>Create</h4>
+                                <p>Generate optimized posts, captions, and hashtags tailored to each channel.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <strong>03</strong>
+                            <div>
+                                <h4>Schedule</h4>
+                                <p>Use AI-driven timing recommendations to post when your audience is most likely to engage.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <strong>04</strong>
+                            <div>
+                                <h4>Publish and Learn</h4>
+                                <p>Automate publishing and use analytics to refine strategy, content, and timing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Why teams use it</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            <p>SocialSauce acts as an intelligent social media assistant that helps users plan, create, schedule, and publish content strategically while saving time and increasing engagement.</p>
+                        </div>
+                        <div class="list-item">
+                            <p>It supports creators who need consistency, startups that need momentum, and businesses that need scalable multi-platform execution.</p>
+                        </div>
+                        <div class="list-item">
+                            <p>Key features include AI content generation, trend discovery, SEO-optimized captions, hashtag suggestions, content calendars, automated scheduling, cross-platform posting, and performance analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer" id="footer">
+            <div class="footer-grid">
+                <div class="footer-card">
+                    <h3>About SocialSauce</h3>
+                    <p>SocialSauce is an AI-powered social media management and content intelligence platform built to help creators, startups, and businesses grow online with smarter planning, creation, scheduling, and publishing.</p>
+                </div>
+                <div class="footer-card">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>AI Content Generation</li>
+                        <li>Trend Discovery</li>
+                        <li>SEO-Optimized Captions</li>
+                        <li>Smart Scheduling</li>
+                    </ul>
+                </div>
+                <div class="footer-card">
+                    <h3>Publishing Channels</h3>
+                    <ul>
+                        <li>LinkedIn</li>
+                        <li>Instagram</li>
+                        <li>X (Twitter)</li>
+                        <li>Cross-Platform Workflows</li>
+                    </ul>
+                </div>
+                <div class="footer-card">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>hello@socialsauce.com</li>
+                        <li>For creators, startups, and businesses</li>
+                        <li>AI-powered social growth support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>©2025 SocialSauce</span>
+                <span>Plan. Create. Schedule. Publish.</span>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
